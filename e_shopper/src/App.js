@@ -2,8 +2,12 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Home from "./container/Home";
 import Header from './component/Header';
+import Checkout from './container/Department/Checkout';
+import Cart from './container/Department/Cart';
 import Footer from './component/Footer';
 import Login from './container/Login';
+import PublicRoute from './publicRoute/publicRoute';
+import PrivateRoute from './privateRoute/privateRoute';
 
 
 function App() {
@@ -11,10 +15,12 @@ function App() {
     <>
     <Header/>
     <Switch>
-      <Route path={"/"} exact component={Home} />
-      <Route path={"/header"} exact component={Header}/>
-      <Route path={"/login"} exact component={Login}/>
-      <Route path={"/footer"} exact component={Footer}/>
+      <PublicRoute path={"/"} exact component={Home} />
+      <PublicRoute path={"/header"} exact component={Header}/>
+      <PrivateRoute path={"/checkout"} exact component={Checkout}/>
+      <PrivateRoute path={"/cart"} exact component={Cart} />
+      <PublicRoute path={"/login"} exact component={Login}/>
+      <PublicRoute path={"/footer"} exact component={Footer}/>
     </Switch>
     </>
   );

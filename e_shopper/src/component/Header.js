@@ -65,8 +65,12 @@ export default function Header() {
                                     <ul className="nav navbar-nav">
                                         <li><a href="#"><i className="fa fa-user" /> Account</a></li>
                                         <li><a href="#"><i className="fa fa-star" /> Wishlist</a></li>
-                                        <li><a href="checkout.html"><i className="fa fa-crosshairs" /> Checkout</a></li>
-                                        <li><a href="cart.html"><i className="fa fa-shopping-cart" /> Cart</a></li>
+                                        <li>
+                                            <NavLink to="/checkout"><i className="fa fa-crosshairs" /> Checkout</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/cart"><i className="fa fa-shopping-cart" /> Cart</NavLink>
+                                        </li>
                                         <li>
                                             <NavLink to="/login"><i className="fa fa-lock" /> Login</NavLink>
                                         </li>
