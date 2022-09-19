@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { isLogin } from '../Utiliti/index'
+import { isLogin } from '../Utiliti';
+
 
 function privateRoute({ component: Component, ...rest }) {
     return (

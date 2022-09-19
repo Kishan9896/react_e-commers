@@ -35,7 +35,7 @@ export default function Header() {
                         <div className="row">
                             <div className="col-sm-4">
                                 <div className="logo pull-left">
-                                    <a href="index.html"><img src="images/home/logo.png" alt /></a>
+                                    <NavLink to={"/"}><img src="images/home/logo.png" alt /></NavLink>
                                 </div>
                                 <div className="btn-group pull-right">
                                     <div className="btn-group">
@@ -63,7 +63,7 @@ export default function Header() {
                             <div className="col-sm-8">
                                 <div className="shop-menu pull-right">
                                     <ul className="nav navbar-nav">
-                                        <li><a href="#"><i className="fa fa-user" /> Account</a></li>
+                                        <li><a href="#"><i className="fa fa-user" /> Admin Panel</a></li>
                                         <li><a href="#"><i className="fa fa-star" /> Wishlist</a></li>
                                         <li>
                                             <NavLink to="/checkout"><i className="fa fa-crosshairs" /> Checkout</NavLink>
@@ -98,9 +98,13 @@ export default function Header() {
                                         <li className="dropdown"><a href="#">Shop<i className="fa fa-angle-down" /></a>
                                             <ul role="menu" className="sub-menu">
                                                 <li><a href="shop.html">Products</a></li>
-                                                <li><a href="product-details.html">Product Details</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
+                                                <li>
+                                                    <NavLink to={"/product"}>Product Details</NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={"/checkout"}>Checkout</NavLink>
+                                                </li>
+                                                <li><NavLink to={"/cart"}>Cart</NavLink></li>
                                                 <li><a href="login.html">Login</a></li>
                                             </ul>
                                         </li>
@@ -124,6 +128,9 @@ export default function Header() {
                     </div>
                 </div>{/*/header-bottom*/}
             </header>{/*/header*/}
+
+            
+
         </div>
     )
 }
