@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { Form, Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
+import { forgotPassword, googleauth, signInAction, signInGoogle, signupAction } from "../Redux/Action/auth.action";
 
 function Login(props) {
   const [login, setLogin] = useState("Login");
@@ -21,7 +22,7 @@ function Login(props) {
       email: "",
       password: "",
     };
-  } else if (login === "Singup") {
+  } else if (login === "Signup") {
     schemaObj = {
       name: yup.string().required("Please Enter Your Name."),
       email: yup.string().required("Please Enter Your Email.").email(),
@@ -35,12 +36,16 @@ function Login(props) {
   }
 
   const handleLogin = () => {
-    localStorage.setItem("user", "kishan");
+    
   };
 
-  const LoginwithGoogle = () => {
-    dispatch()
-  };
+  const signinGoogle = () => {
+    dispatch(signInGoogle())
+  }
+
+  const forgotpassword = () => {
+    dispatch(forgotPassword())
+  }
 
   let schema = yup.object().shape(schemaObj);
 
@@ -49,7 +54,9 @@ function Login(props) {
     validationSchema: schema,
     onSubmit: (values, action) => {
       if (login === "Login") {
-        handleLogin();
+        dispatch(signInAction(values))
+      } else if (login === "Signup") {
+        dispatch(signupAction(values))
       }
       action.resetForm();
     },
@@ -58,7 +65,7 @@ function Login(props) {
 
   const { handleSubmit, handleChange, handleBlur, errors, touched, values } =
     formik;
-  console.log(errors);
+  // console.log(errors);
 
   return (
     <main>
@@ -74,7 +81,7 @@ function Login(props) {
                 ) : login === "Login" ? (
                   <h2>Login</h2>
                 ) : (
-                  <h2>Singup</h2>
+                  <h2>Signup</h2>
                 )}
                 <Formik values={formik}>
                   <Form onSubmit={handleSubmit}>
@@ -99,6 +106,7 @@ function Login(props) {
                     )}
                     <input
                       type="email"
+                      id="email"
                       name="email"
                       placeholder="Email Address"
                       onChange={handleChange}
@@ -133,7 +141,7 @@ function Login(props) {
                         <button
                           type="button"
                           onClick={() => {
-                            setLogin("Singup");
+                            setLogin("Signup");
                             setReset(false);
                           }}
                         >
@@ -163,7 +171,7 @@ function Login(props) {
                     </button>
                     {reset ? (
                       <div className="text-center">
-                        <button type="submit">submit</button>
+                        <button type="submit" onClick={forgotpassword}>submit</button>
                       </div>
                     ) : login === "Login" ? (
                       <div className="text-center">
@@ -171,10 +179,10 @@ function Login(props) {
                       </div>
                     ) : (
                       <div className="text-center">
-                        <button type="submit">Singup</button>
+                        <button type="submit">Signup</button>
                       </div>
                     )}
-                    <button type="submit" onClick={LoginwithGoogle}>
+                    <button type="submit" onClick={signinGoogle}>
                       Login With Google
                     </button>
                   </Form>

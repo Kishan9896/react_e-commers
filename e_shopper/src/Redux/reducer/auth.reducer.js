@@ -1,13 +1,25 @@
+import * as Actiontype from "../Actiontype";
+
 const initval = {
-  data: null,
+  value: null,
+  error: "",
 };
 
 export const authReducer = (state = initval, action) => {
   switch (action.type) {
-    case value:
-      break;
-
+    case Actiontype.SIGNED_IN:
+      return {
+        ...state,
+        value: action.payload,
+        error: "",
+      };
+    case Actiontype.LOGGED_OUT:
+      return {
+        ...state,
+        value: null,
+        error: "",
+      };
     default:
-      break;
+      return state;
   }
 };

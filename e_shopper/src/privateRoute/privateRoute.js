@@ -1,12 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
-import { isLogin } from '../Utiliti';
 
 
-function privateRoute({ component: Component, ...rest }) {
+
+function PrivateRoute({ component: Component, ...rest }) {
+    const auth = useSelector((state) => state.auth)
     return (
         <Route {...rest} render = {props => (
-            isLogin () ?
+            auth.value !== null ?
             <Component  {...props} /> 
             :
             <Redirect to={"/login"} />
@@ -15,4 +17,4 @@ function privateRoute({ component: Component, ...rest }) {
     );
 }
 
-export default privateRoute;
+export default PrivateRoute;
