@@ -35,10 +35,6 @@ function Login(props) {
     };
   }
 
-  const handleLogin = () => {
-    
-  };
-
   const signinGoogle = () => {
     dispatch(signInGoogle())
   }

@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./Redux/Store";
 import { SnackbarProvider } from "notistack";
+import Admin from "./container/Department/Admin";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
               <PublicRoute path={"/product"} exact component={Product} />
               <PrivateRoute path={"/checkout"} exact component={Checkout} />
               <PrivateRoute path={"/cart"} exact component={Cart} />
-              <PrivateRoute path={"/admin"} expect component={}/>
+              <PrivateRoute path={"/admin"} expect component={Admin}/>
               <PublicRoute
                 path={"/login"}
                 restricted={true}

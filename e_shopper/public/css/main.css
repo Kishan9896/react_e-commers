@@ -6,6 +6,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
+button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   position: relative;

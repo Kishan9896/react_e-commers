@@ -12,10 +12,6 @@ export default function Header() {
     dispatch(logoutAction());
   };
 
-  const Admin = () => {
-    
-  }
-
   return (
     <div>
       <header id="header">
@@ -128,7 +124,7 @@ export default function Header() {
                 <div className="shop-menu pull-right">
                   <ul className="nav navbar-nav">
                     <li>
-                      <NavLink to="/admin" onClick={Admin}>
+                      <NavLink to="/admin">
                         <i className="fa fa-user" /> Admin Panel
                       </NavLink>
                     </li>
