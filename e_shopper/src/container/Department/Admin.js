@@ -45,7 +45,7 @@ function Admin(props) {
     Brandname: yup.string().required("Please Enter Brand Name."),
     price: yup.number().required("Please Enter Price."),
     quntity: yup.number().required("Please Enter Quntity."),
-    catagory: yup.number().required("Please Enter catagory."),
+    catagory: yup.string().required("Please Enter catagory."),
     Prof_img: yup.mixed().required("please select profile picture."),
   });
 
@@ -155,9 +155,9 @@ function Admin(props) {
   };
 
   const handleSearch = (value) => {
-    const localSearch = JSON.parse(localStorage.getItem("product"));
+    // const localSearch = JSON.parse(localStorage.getItem("product"));
 
-    const filterData = localSearch.filter(
+    const filterData = product.product.filter(
       (a) =>
         a.name.toLowerCase().includes(value) ||
         a.Brandname.toString().includes(value) ||
@@ -166,10 +166,11 @@ function Admin(props) {
         a.quntity.toString().includes(value)
     );
     setSearch(filterData);
+    console.log(filterData);
   };
 
-  const Sdata = search.length > 0 ? search : data;
   const product = useSelector((state) => state.products);
+  const Sdata = search.length > 0 ? search : product.product;
 
   useEffect(() => {
     // local();
@@ -204,7 +205,7 @@ function Admin(props) {
             />
             <div style={{ height: 400, width: "100%" }}>
               <DataGrid
-                rows={product.product}
+                rows={Sdata}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
